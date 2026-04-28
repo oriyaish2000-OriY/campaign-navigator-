@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Share-Pen — טקסט אוצרות | Curatorial Text</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Heebo:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:#060408;
+  color:#f0eae0;
+  font-family:'Cormorant Garamond',serif;
+  padding:80px 60px;
+  max-width:1000px;
+  margin:0 auto;
+  line-height:1.85;
+}
+
+/* Opening label */
+.opening-label {
+  font-size:10px;
+  letter-spacing:6px;
+  color:#7a6e85;
+  text-transform:uppercase;
+  font-family:'Heebo',sans-serif;
+  font-weight:300;
+  margin-bottom:36px;
+  text-align:center;
+}
+
+/* Bilingual block */
+.bilingual {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  margin-bottom:70px;
+}
+.text-he {
+  direction:rtl;
+  text-align:right;
+  border-right:1px solid #2a2030;
+  padding-right:30px;
+}
+.text-en {
+  direction:ltr;
+  text-align:left;
+  border-left:1px solid #2a2030;
+  padding-left:30px;
+}
+.opening-title-he {
+  font-size:28px;
+  font-weight:300;
+  color:#d4a535;
+  font-style:italic;
+  margin-bottom:20px;
+  line-height:1.3;
+}
+.opening-title-en {
+  font-size:28px;
+  font-weight:300;
+  color:#d4a535;
+  font-style:italic;
+  margin-bottom:20px;
+  line-height:1.3;
+}
+.opening-body {
+  font-size:17px;
+  font-weight:300;
+  color:#f0eae0;
+  line-height:1.9;
+  opacity:0.85;
+}
+
+/* Gold separator */
+.sep {
+  display:flex;
+  align-items:center;
+  gap:20px;
+  margin:50px 0;
+}
+.sep-line { flex:1; height:1px; background:linear-gradient(to left,transparent,#d4a535,transparent); opacity:0.35; }
+.sep-diamond { width:7px; height:7px; background:#d4a535; transform:rotate(45deg); flex-shrink:0; }
+
+/* Section title */
+.section-title {
+  font-size:13px;
+  letter-spacing:6px;
+  color:#7a6e85;
+  text-transform:uppercase;
+  font-family:'Heebo',sans-serif;
+  font-weight:300;
+  text-align:center;
+  margin-bottom:40px;
+}
+
+/* Three pillars station labels */
+.stations-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  margin-bottom:70px;
+}
+.station {
+  border:1px solid #1e1628;
+  padding:32px 26px;
+}
+.station-num {
+  font-size:48px;
+  color:#d4a535;
+  opacity:0.12;
+  font-weight:300;
+  line-height:1;
+  margin-bottom:12px;
+}
+.station-title-en {
+  font-size:26px;
+  font-weight:300;
+  color:#d4a535;
+  font-style:italic;
+  margin-bottom:4px;
+}
+.station-title-he {
+  font-size:13px;
+  font-family:'Heebo',sans-serif;
+  font-weight:300;
+  color:#7a6e85;
+  letter-spacing:2px;
+  margin-bottom:20px;
+  direction:rtl;
+}
+.station-body {
+  font-size:15px;
+  color:#f0eae0;
+  opacity:0.75;
+  line-height:1.8;
+}
+.station-body-he {
+  direction:rtl;
+  text-align:right;
+  font-family:'Heebo',sans-serif;
+  font-size:13px;
+  font-weight:300;
+  color:#7a6e85;
+  line-height:1.8;
+  margin-top:12px;
+}
+
+/* Manifesto wall text */
+.manifesto-wall {
+  background:#0c0a07;
+  border:1px solid #d4a535;
+  padding:60px;
+  text-align:center;
+  margin-bottom:70px;
+  position:relative;
+}
+.manifesto-wall::before {
+  content:'';
+  position:absolute;
+  inset:8px;
+  border:1px solid #d4a535;
+  opacity:0.15;
+}
+.manifesto-label {
+  font-size:10px;
+  letter-spacing:6px;
+  color:#7a6e85;
+  text-transform:uppercase;
+  font-family:'Heebo',sans-serif;
+  font-weight:300;
+  margin-bottom:30px;
+}
+.manifesto-line {
+  font-size:clamp(20px,3vw,32px);
+  font-weight:300;
+  color:#d4a535;
+  font-style:italic;
+  line-height:1.5;
+  margin-bottom:8px;
+}
+.manifesto-line.he {
+  font-family:'Heebo',sans-serif;
+  font-size:clamp(18px,2.5vw,26px);
+  color:#f0eae0;
+  font-style:normal;
+  font-weight:200;
+  opacity:0.8;
+  direction:rtl;
+  margin-top:20px;
+}
+
+/* Creator statement */
+.creator-statement {
+  max-width:680px;
+  margin:0 auto 50px;
+  text-align:center;
+}
+.creator-label {
+  font-size:10px;
+  letter-spacing:6px;
+  color:#7a6e85;
+  text-transform:uppercase;
+  font-family:'Heebo',sans-serif;
+  font-weight:300;
+  margin-bottom:24px;
+}
+.creator-body {
+  font-size:19px;
+  font-style:italic;
+  font-weight:300;
+  color:#f0eae0;
+  line-height:1.9;
+  opacity:0.8;
+}
+.creator-body-he {
+  font-family:'Heebo',sans-serif;
+  font-size:15px;
+  font-weight:200;
+  color:#7a6e85;
+  line-height:1.9;
+  direction:rtl;
+  margin-top:20px;
+}
+.creator-sig {
+  margin-top:28px;
+  font-size:12px;
+  letter-spacing:4px;
+  color:#d4a535;
+  font-family:'Heebo',sans-serif;
+  font-weight:300;
+}
+
+/* Footer */
+.footer-mark {
+  text-align:center;
+  padding-top:50px;
+  border-top:1px solid #1e1628;
+}
+.footer-brand {
+  font-size:32px;
+  font-weight:300;
+  color:#d4a535;
+  letter-spacing:8px;
+  margin-bottom:6px;
+}
+.footer-tagline {
+  font-size:10px;
+  letter-spacing:5px;
+  color:#3a3040;
+  font-family:'Heebo',sans-serif;
+  text-transform:uppercase;
+}
+</style>
+</head>
+<body>
+
+<div class="opening-label">Curatorial Text | טקסט אוצרות — Share-Pen GENESIS 2026</div>
+
+<!-- OPENING STATEMENT -->
+<div class="bilingual">
+  <div class="text-he">
+    <div class="opening-title-he">מה שאתם רואים כאן<br>אינו תערוכה.</div>
+    <div class="opening-body">
+      הכתיבה היא המהפכה העתיקה ביותר של האנושות. היא זו שהפכה שבטים לציוויליזציות, עדויות לחוק, ויגון לשיר. אך לאורך ההיסטוריה, הכתיבה הייתה נחלתם של מעטים — אלו שנבחרו, שהוסמכו, שקיבלו רשות לדבר.
+      <br><br>
+      Share-Pen היא הפרק הבא של אותה מהפכה. לא עוד שומרי סף. לא עוד הדף הריק שמנצח. לא עוד AI שגונב את הקול שלך — אלא AI שמגביר אותו.
+      <br><br>
+      מה שאתם רואים כאן הוא הצהרת כוונות: כל לב אנושי מחזיק סיפור. עכשיו הוא יכול להיכתב.
+    </div>
+  </div>
+  <div class="text-en">
+    <div class="opening-title-en">What you see here<br>is not an exhibition.</div>
+    <div class="opening-body">
+      Writing is humanity's oldest revolution. It transformed tribes into civilizations, testimonies into law, grief into song. Yet throughout history, writing remained the domain of the few — those chosen, certified, granted permission to speak.
+      <br><br>
+      Share-Pen is the next chapter of that revolution. No more gatekeepers. No more blank page as an adversary. No more AI that steals your voice — but AI that amplifies it.
+      <br><br>
+      What you see here is a declaration of intent: every human heart holds a story. Now it can be written.
+    </div>
+  </div>
+</div>
+
+<!-- STATION LABELS -->
+<div class="section-title">Station Labels | תוויות תחנות</div>
+
+<div class="stations-grid">
+  <div class="station">
+    <div class="station-num">I</div>
+    <div class="station-title-en">Liberation</div>
+    <div class="station-title-he">שחרור — אין שומרי סף</div>
+    <div class="station-body">
+      For centuries, the ability to tell your story publicly required permission: from publishers, editors, institutions, languages. Share-Pen revokes that permission requirement. Your story needs no gatekeeper. The pen belongs to everyone — always did.
+    </div>
+    <div class="station-body-he">
+      לאורך מאות שנים, היכולת לספר את הסיפור שלך בפומבי דרשה אישור. Share-Pen מבטלת את הצורך הזה. העט שייך לכולם — תמיד היה.
+    </div>
+  </div>
+  <div class="station">
+    <div class="station-num">II</div>
+    <div class="station-title-en">Partnership</div>
+    <div class="station-title-he">שותפות — AI שמשרת</div>
+    <div class="station-body">
+      We are not building a machine that writes for you. We are building a mirror that shows you how brilliantly you already write. The AI is a sword. The human wields it. The author is always you — the intelligence amplifies, never replaces.
+    </div>
+    <div class="station-body-he">
+      אנחנו לא בונים מכונה שכותבת עבורך. אנחנו בונים מראה שמראה לך כמה יפה אתה כבר כותב. ה-AI הוא כלי. האדם מחזיק בו.
+    </div>
+  </div>
+  <div class="station">
+    <div class="station-num">III</div>
+    <div class="station-title-en">Community</div>
+    <div class="station-title-he">קהילה — יחד כותבים היסטוריה</div>
+    <div class="station-body">
+      Alone, you write a sentence. Together, we write history. Share-Pen connects writers across five languages, across continents, across silences that language barriers once made permanent. The revolution is collective — or it is nothing.
+    </div>
+    <div class="station-body-he">
+      לבד תכתוב משפט. ביחד נכתוב היסטוריה. Share-Pen מחברת כותבים בחמש שפות, על פני יבשות ושתיקות שמחסומי שפה הנציחו. המהפכה קולקטיבית — או שאינה כלום.
+    </div>
+  </div>
+</div>
+
+<!-- MANIFESTO WALL -->
+<div class="manifesto-wall">
+  <div class="manifesto-label">The Manifesto Wall | קיר המניפסט</div>
+  <div class="manifesto-line">"The revolution will be co-written."</div>
+  <div class="manifesto-line">"Every voice belongs here."</div>
+  <div class="manifesto-line">"The blank page surrenders today."</div>
+  <div class="manifesto-line he">המהפכה נכתבת ביחד.</div>
+  <div class="manifesto-line he">כל קול שייך לכאן.</div>
+  <div class="manifesto-line he">הדף הריק נכנע היום.</div>
+</div>
+
+<!-- CREATOR STATEMENT -->
+<div class="section-title">Creator Statement | הצהרת היוצרים</div>
+<div class="creator-statement">
+  <div class="creator-label">From the Share-Pen Founding Team</div>
+  <div class="creator-body">
+    We built Share-Pen because we believe the world is drowning in stories that were never told. Not because the stories weren't worth telling — but because the tools weren't worthy of the tellers. We set out to change that. Not with technology for technology's sake, but with intelligence in service of imagination. Every feature we built asks one question: does this make the writer more powerful? If yes, it stays. If not, it goes.
+  </div>
+  <div class="creator-body-he">
+    בנינו את Share-Pen כי האמנו שהעולם שוקע בסיפורים שמעולם לא סופרו. לא כי הסיפורים לא היו שווים — אלא כי הכלים לא היו ראויים לסיפורים. יצאנו לשנות את זה. לא טכנולוגיה למען טכנולוגיה — אלא בינה בשירות הדמיון.
+  </div>
+  <div class="creator-sig">— The Share-Pen Team, GENESIS 2026</div>
+</div>
+
+<div class="sep">
+  <div class="sep-line"></div>
+  <div class="sep-diamond"></div>
+  <div class="sep-line"></div>
+</div>
+
+<div class="footer-mark">
+  <div class="footer-brand">SHARE—PEN</div>
+  <div class="footer-tagline">Write with Purpose. — share-pen.com — #WriteWithPurpose</div>
+</div>
+
+</body>
+</html>
